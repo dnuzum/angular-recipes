@@ -1,4 +1,4 @@
-var app = angular.module('RecipeApp', ['ui.router', 'RecipeCtrls']);
+var app = angular.module('RecipeApp', ['ui.router', 'RecipeCtrls', 'ui.bootstrap']);
 
 app.config([
   '$stateProvider',
@@ -40,4 +40,8 @@ app.config([
   });
 
   $locationProvider.html5Mode(true);
-}]);
+}])
+
+.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push('AuthInterceptor');
+}])
